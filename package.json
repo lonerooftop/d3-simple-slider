@@ -1,6 +1,6 @@
 {
   "name": "d3-simple-slider",
-  "version": "1.10.4",
+  "version": "1.11.0",
   "description": "Renders an SVG slider",
   "keywords": [
     "d3",
@@ -20,7 +20,7 @@
   "module": "src/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/johnwalley/d3-simple-slider.git"
+    "url": "https://github.com/lonerooftop/d3-simple-slider.git"
   },
   "files": [
     "dist/**/*.js",
@@ -46,9 +46,9 @@
     "@storybook/addon-essentials": "6.3.8",
     "@storybook/html": "6.3.8",
     "babel-loader": "8.2.2",
-    "d3-format": "2.0.0",
-    "d3-shape": "2.0.0",
-    "d3-time-format": "3.0.0",
+    "d3-format": "3.0.1",
+    "d3-shape": "3.0.1",
+    "d3-time-format": "4.0.0",
     "eslint": "7.32.0",
     "husky": "4.3.0",
     "jsdom": "16.7.0",
@@ -59,13 +59,13 @@
     "tape": "5.3.1"
   },
   "dependencies": {
-    "d3-array": "1 - 2",
-    "d3-axis": "1 - 2",
-    "d3-dispatch": "1 - 2",
-    "d3-drag": "1 - 2",
-    "d3-ease": "1 - 2",
-    "d3-scale": "2 - 3",
-    "d3-selection": "1 - 2",
-    "d3-transition": "1 - 2"
+    "d3-array": "2 - 3",
+    "d3-axis": "2 - 3",
+    "d3-dispatch": "2 - 3",
+    "d3-drag": "2 - 3",
+    "d3-ease": "2 - 3",
+    "d3-scale": "3 - 4",
+    "d3-selection": "2 - 3",
+    "d3-transition": "2 - 3"
   }
 }
