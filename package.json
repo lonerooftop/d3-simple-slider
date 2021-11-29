@@ -67,5 +67,6 @@
     "d3-scale": "3 - 4",
     "d3-selection": "2 - 3",
     "d3-transition": "2 - 3"
-  }
+  },
+  "type": "module"
 }

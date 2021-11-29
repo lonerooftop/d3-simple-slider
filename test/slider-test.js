@@ -1,29 +1,30 @@
-var tape = require('tape');
-var jsdom = require('jsdom');
-var fs = require('fs');
-var path = require('path');
-d3 = Object.assign({}, require('d3-selection'), require('../'));
+import tape from 'tape';
+import jsdom from 'jsdom';
+import fs from 'fs';
+import path from 'path';
+import * as d3sel from 'd3-selection';
+import * as rest from '../src/index.js';
+var d3 = Object.assign({}, d3sel, rest);
+var __dirname = path.resolve() + '/test';
 
-tape('sliderHorizontal() has the expected defaults', function(test) {
+tape('sliderHorizontal() has the expected defaults', function (test) {
   var s = d3.sliderHorizontal();
   test.equal(s.tickFormat(), null);
   test.end();
 });
 
-tape('slider.min(value), slider.max(value) set the expected values', function(
-  test
-) {
-  var s = d3
-    .sliderHorizontal()
-    .min(100)
-    .max(200);
-  test.equal(s.min(), 100);
-  test.equal(s.max(), 200);
-  test.deepEqual(s.domain(), [100, 200]);
-  test.end();
-});
+tape(
+  'slider.min(value), slider.max(value) set the expected values',
+  function (test) {
+    var s = d3.sliderHorizontal().min(100).max(200);
+    test.equal(s.min(), 100);
+    test.equal(s.max(), 200);
+    test.deepEqual(s.domain(), [100, 200]);
+    test.end();
+  }
+);
 
-tape('slider.domain([min,max]) sets the expected values', function(test) {
+tape('slider.domain([min,max]) sets the expected values', function (test) {
   var s = d3.sliderHorizontal().domain([100, 200]);
   test.deepEqual(s.domain(), [100, 200]);
   test.equal(s.min(), 100);
@@ -31,21 +32,21 @@ tape('slider.domain([min,max]) sets the expected values', function(test) {
   test.end();
 });
 
-tape('slider.default(value) sets the default value', function(test) {
+tape('slider.default(value) sets the default value', function (test) {
   var s = d3.sliderHorizontal().default(10);
   test.equal(s.value(), 10);
   test.equal(s.default(), 10);
   test.end();
 });
 
-tape('slider.default(value) sets the default range', function(test) {
+tape('slider.default(value) sets the default range', function (test) {
   var s = d3.sliderHorizontal().default([4, 8]);
   test.deepEqual(s.value(), [4, 8]);
   test.deepEqual(s.default(), [4, 8]);
   test.end();
 });
 
-tape('sliderVertical(selection) produces the expected result', function(test) {
+tape('sliderVertical(selection) produces the expected result', function (test) {
   var window = new jsdom.JSDOM('<!DOCTYPE html><svg><g></g></svg>').window;
   global.window = window;
   global.document = window.document;
@@ -57,35 +58,32 @@ tape('sliderVertical(selection) produces the expected result', function(test) {
   var bodyExpected = new jsdom.JSDOM(file('slider-horizontal.html')).window
     .document.body;
 
-  d3.select(bodyActual)
-    .select('g')
-    .call(d3.sliderHorizontal());
+  d3.select(bodyActual).select('g').call(d3.sliderHorizontal());
 
   test.equal(bodyActual.outerHTML, bodyExpected.outerHTML);
   test.end();
 });
 
-tape('sliderHorizontal(selection) produces the expected result', function(
-  test
-) {
-  var window = new jsdom.JSDOM('<!DOCTYPE html><svg><g></g></svg>').window;
-  global.window = window;
-  global.document = window.document;
-  global.navigator = {
-    userAgent: 'node.js',
-  };
-  copyProps(window, global);
-  var bodyActual = window.document.body;
-  var bodyExpected = new jsdom.JSDOM(file('slider-vertical.html')).window
-    .document.body;
+tape(
+  'sliderHorizontal(selection) produces the expected result',
+  function (test) {
+    var window = new jsdom.JSDOM('<!DOCTYPE html><svg><g></g></svg>').window;
+    global.window = window;
+    global.document = window.document;
+    global.navigator = {
+      userAgent: 'node.js',
+    };
+    copyProps(window, global);
+    var bodyActual = window.document.body;
+    var bodyExpected = new jsdom.JSDOM(file('slider-vertical.html')).window
+      .document.body;
 
-  d3.select(bodyActual)
-    .select('g')
-    .call(d3.sliderVertical());
+    d3.select(bodyActual).select('g').call(d3.sliderVertical());
 
-  test.equal(bodyActual.outerHTML, bodyExpected.outerHTML);
-  test.end();
-});
+    test.equal(bodyActual.outerHTML, bodyExpected.outerHTML);
+    test.end();
+  }
+);
 
 function file(file) {
   return fs
