@@ -43,8 +43,8 @@
   },
   "devDependencies": {
     "@babel/core": "7.15.5",
-    "@storybook/addon-essentials": "6.3.8",
-    "@storybook/html": "6.3.8",
+    "@storybook/addon-essentials": "6.5.16",
+    "@storybook/html": "7.4.6",
     "babel-loader": "8.2.2",
     "d3-format": "3.0.1",
     "d3-shape": "3.0.1",
